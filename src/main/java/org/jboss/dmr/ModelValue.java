@@ -24,7 +24,6 @@ package org.jboss.dmr;
 
 import java.io.DataOutput;
 import java.io.IOException;
-import java.io.ObjectOutput;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
@@ -90,6 +89,10 @@ abstract class ModelValue implements Cloneable {
     }
 
     abstract String asString();
+
+    String asString(String defVal) {
+    	return asString();
+    }
 
     Property asProperty() {
         throw new IllegalArgumentException();
@@ -183,6 +186,10 @@ abstract class ModelValue implements Cloneable {
 
         double asDouble(final double defVal) {
             return defVal;
+        }
+
+        String asString(String defVal) {
+        	return defVal;
         }
 
         public boolean equals(final Object other) {

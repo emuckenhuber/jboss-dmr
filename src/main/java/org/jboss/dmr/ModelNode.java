@@ -33,8 +33,6 @@ import java.io.InvalidObjectException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.io.OutputStream;
-import java.io.Reader;
-import java.io.StringReader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -156,6 +154,17 @@ public class ModelNode implements Externalizable, Cloneable {
      */
     public String asString() {
         return value.asString();
+    }
+
+    /**
+     * Get the value as a string.  This is the literal value of this model node.  More than one node type may
+     * yield the same value for this method.
+     *
+     * @param defVal the default value if no conversion is possible
+     * @return the string value
+     */
+    public String asString(String defVal) {
+        return value.asString(defVal);
     }
 
     /**
